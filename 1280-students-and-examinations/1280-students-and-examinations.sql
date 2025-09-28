@@ -1,14 +1,14 @@
 /* Write your T-SQL query statement below */
-SELECT Students.student_id 
-        ,Students.student_name 
-        ,Subjects.subject_name
-        ,Count(Examinations.student_id) AS attended_exams
-FROM Students
-CROSS JOIN Subjects
-LEFT JOIN Examinations ON Students.student_id = Examinations.student_id 
-        AND Subjects.subject_name = Examinations.subject_name
-GROUP BY Students.student_id
-        ,Students.student_name
-        ,Subjects.subject_name
-ORDER BY Students.student_id
-        ,Subjects.subject_name;
+SELECT Stu.student_id 
+        ,Stu.student_name 
+        ,Sub.subject_name
+        ,Count(Exam.student_id) AS attended_exams
+FROM Students stu
+CROSS JOIN Subjects sub
+LEFT JOIN Examinations exam ON Stu.student_id = Exam.student_id 
+        AND Sub.subject_name = Exam.subject_name
+GROUP BY Stu.student_id
+        ,Stu.student_name
+        ,Sub.subject_name
+ORDER BY Stu.student_id
+        ,Sub.subject_name;
